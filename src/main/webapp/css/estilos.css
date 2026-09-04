@@ -1,0 +1,281 @@
+:root {
+    --azul:    #0b1325;
+    --azul-2:  #1a2a4a;
+    --rojo:    #c8102e;
+    --fondo:   #f4f6f9;
+    --borde:   #d9dee7;
+    --texto:   #2b3445;
+    --suave:   #6c7688;
+    --verde:   #1b7f4d;
+    --ambar:   #b8860b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-size: 15px;
+}
+
+/* --- Cabecera y navegacion --- */
+
+.cabecera { background: var(--azul); color: #fff; }
+
+.cabecera-barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    border-bottom: 3px solid var(--rojo);
+}
+
+.marca { font-size: 20px; font-weight: 700; letter-spacing: .5px; }
+.marca-sub { font-weight: 400; color: #c3cad8; font-size: 15px; }
+.cabecera-datos { font-size: 13px; color: #c3cad8; }
+
+.menu {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: #dfe4ec;
+    text-decoration: none;
+    padding: 12px 18px;
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+}
+
+.menu a:hover { background: var(--azul-2); border-bottom-color: var(--rojo); }
+.menu-salir { margin-left: auto; }
+
+/* --- Contenedores --- */
+
+.contenedor {
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 0 24px 40px;
+}
+
+.contenedor-error {
+    max-width: 620px;
+    margin: 60px auto;
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 32px;
+}
+
+h1 { font-size: 25px; color: var(--azul); margin: 0 0 6px; }
+h2 { font-size: 17px; color: var(--azul); margin: 0 0 16px; }
+
+.texto-apoyo { color: var(--suave); font-size: 14px; margin: 6px 0 20px; }
+
+.bloque {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 22px;
+    margin-bottom: 24px;
+}
+
+/* --- Tarjetas del panel --- */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.tarjeta {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-left: 5px solid var(--azul);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tarjeta-alerta { border-left-color: var(--rojo); }
+.tarjeta-valor  { font-size: 27px; font-weight: 700; color: var(--azul); }
+.tarjeta-rotulo { font-size: 13px; color: var(--suave); text-transform: uppercase; letter-spacing: .4px; }
+
+.accesos { margin-top: 26px; }
+
+/* --- Formularios --- */
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    align-items: end;
+}
+
+.formulario-filtro { grid-template-columns: minmax(220px, 320px) auto; }
+
+.campo { display: flex; flex-direction: column; }
+.campo-ancho { grid-column: span 2; }
+.campo-boton { align-self: end; }
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--azul);
+    margin-bottom: 6px;
+}
+
+input, select {
+    font-family: inherit;
+    font-size: 15px;
+    padding: 9px 11px;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--texto);
+}
+
+input:focus, select:focus { outline: 2px solid var(--azul-2); outline-offset: 1px; }
+
+/* --- Botones --- */
+
+.boton {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 1px solid var(--azul);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--azul);
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.boton:hover { background: var(--azul); color: #fff; }
+
+.boton-principal { background: var(--azul); color: #fff; }
+.boton-principal:hover { background: var(--azul-2); }
+
+/* --- Avisos --- */
+
+.aviso {
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 16px 0;
+}
+
+.aviso-ok    { background: #e6f4ec; color: var(--verde); border-left: 5px solid var(--verde); }
+.aviso-error { background: #fdeaec; color: var(--rojo);  border-left: 5px solid var(--rojo); }
+
+/* --- Tablas --- */
+
+.tabla-scroll { overflow-x: auto; }
+
+.tabla { width: 100%; border-collapse: collapse; }
+
+.tabla th, .tabla td {
+    border: 1px solid var(--borde);
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.tabla th { background: var(--azul); color: #fff; font-weight: 600; }
+.tabla-datos tbody tr:nth-child(even) { background: #fafbfd; }
+.tabla-datos tbody tr:hover { background: #eef2f8; }
+
+/* --- Etiquetas de estado --- */
+
+.etiqueta {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 11px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.etiqueta-ok     { background: #e6f4ec; color: var(--verde); }
+.etiqueta-alerta { background: #fdf3dd; color: var(--ambar); }
+.etiqueta-rojo   { background: #fdeaec; color: var(--rojo); }
+.etiqueta-gris   { background: #eceff4; color: var(--suave); }
+
+/* --- Pantalla de acceso --- */
+
+.fondo-acceso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--azul);
+}
+
+.tarjeta-acceso {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 34px 30px;
+    margin: 20px;
+}
+
+.titulo-acceso {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+    border-bottom: 3px solid var(--rojo);
+    padding-bottom: 10px;
+}
+
+.subtitulo-acceso { color: var(--suave); font-size: 14px; margin: 12px 0 22px; }
+
+.tarjeta-acceso label { margin-top: 14px; }
+.tarjeta-acceso input { width: 100%; }
+.tarjeta-acceso .boton { width: 100%; margin: 24px 0 0; }
+
+/* --- Pie --- */
+
+.pie {
+    background: var(--azul);
+    color: #9aa5b8;
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    border-top: 3px solid var(--rojo);
+}
+
+.ticket {
+    background: #f7f9fc;
+    border: 1px dashed var(--borde);
+    border-radius: 4px;
+    padding: 14px;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 720px) {
+    .contenedor { padding: 0 14px 30px; }
+    .campo-ancho { grid-column: span 1; }
+    .formulario, .formulario-filtro { grid-template-columns: 1fr; }
+    .menu-salir { margin-left: 0; }
+    .boton { display: block; margin: 0 0 10px; text-align: center; }
+}
