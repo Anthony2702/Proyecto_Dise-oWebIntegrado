@@ -23,7 +23,9 @@
     </p>
 
     <%
-        System.err.println("[AUTODEV] Excepcion capturada: " + exception.getMessage());
+        if (exception != null) {
+            System.err.println("[AUTODEV] Excepcion capturada: " + exception.getMessage());
+        }
     %>
 
     <a href="DashboardServlet" class="boton boton-principal">Volver al panel</a>

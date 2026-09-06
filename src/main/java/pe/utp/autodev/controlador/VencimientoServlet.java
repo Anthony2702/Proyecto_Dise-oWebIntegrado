@@ -38,7 +38,7 @@ public class VencimientoServlet extends HttpServlet {
                    + "FROM licencia l "
                    + "INNER JOIN cliente c  ON c.id_cliente  = l.id_cliente "
                    + "INNER JOIN producto p ON p.id_producto = l.id_producto "
-                   + "WHERE l.estado = 'VIGENTE' AND DATEDIFF(l.fecha_fin, CURDATE()) <= ? "
+                   + "WHERE l.estado <> 'ANULADA' AND DATEDIFF(l.fecha_fin, CURDATE()) <= ? "
                    + "ORDER BY l.fecha_fin";
 
         try (Connection cn = ConexionBD.obtener();

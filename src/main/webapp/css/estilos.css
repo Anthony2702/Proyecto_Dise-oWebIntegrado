@@ -18,11 +18,14 @@ body {
     background-color: var(--fondo);
     color: var(--texto);
     font-size: 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* --- Cabecera y navegacion --- */
 
-.cabecera { background: var(--azul); color: #fff; }
+.cabecera { flex-shrink: 0; background: var(--azul); color: #fff; }
 
 .cabecera-barra {
     display: flex;
@@ -62,14 +65,17 @@ body {
 /* --- Contenedores --- */
 
 .contenedor {
+    width: 100%;
     max-width: 1150px;
     margin: 30px auto;
     padding: 0 24px 40px;
+    flex: 1 0 auto;
 }
 
 .contenedor-error {
     max-width: 620px;
     margin: 60px auto;
+    flex: 0 0 auto;
     background: #fff;
     border: 1px solid var(--borde);
     border-radius: 8px;
@@ -220,10 +226,8 @@ input:focus, select:focus { outline: 2px solid var(--azul-2); outline-offset: 1p
 /* --- Pantalla de acceso --- */
 
 .fondo-acceso {
-    display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     background: var(--azul);
 }
 
@@ -253,6 +257,7 @@ input:focus, select:focus { outline: 2px solid var(--azul-2); outline-offset: 1p
 /* --- Pie --- */
 
 .pie {
+    flex-shrink: 0;
     background: var(--azul);
     color: #9aa5b8;
     text-align: center;

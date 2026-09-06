@@ -40,10 +40,10 @@
     </section>
 
     <section class="bloque">
-        <h2>Resultado: <%= lista.size() %> licencia(s) en los proximos <%= dias %> dias</h2>
+        <h2>Resultado: <%= lista.size() %> licencia(s) vencidas o por vencer en <%= dias %> dias</h2>
 
         <% if (lista.isEmpty()) { %>
-            <p class="aviso aviso-ok">No hay licencias por vencer en el rango consultado.</p>
+            <p class="aviso aviso-ok">No hay licencias vencidas ni por vencer en el rango consultado.</p>
         <% } else { %>
         <div class="tabla-scroll">
             <table class="tabla tabla-datos">
@@ -55,6 +55,7 @@
                         <th>Producto</th>
                         <th>Vence</th>
                         <th>Dias</th>
+                        <th>Estado</th>
                         <th>Monto renovacion</th>
                     </tr>
                 </thead>
@@ -71,6 +72,7 @@
                         <td><%= l.getProducto() %></td>
                         <td><%= l.getFechaFin() %></td>
                         <td><span class="etiqueta etiqueta-<%= clase %>"><%= l.getDiasRestantes() %></span></td>
+                        <td><span class="etiqueta etiqueta-<%= "VIGENTE".equals(l.getEstado()) ? "ok" : "rojo" %>"><%= l.getEstado() %></span></td>
                         <td>S/ <%= String.format("%,.2f", l.getMontoContrato()) %></td>
                     </tr>
                 <%
