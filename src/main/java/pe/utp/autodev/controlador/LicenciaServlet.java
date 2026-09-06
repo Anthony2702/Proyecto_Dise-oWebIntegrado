@@ -95,7 +95,7 @@ public class LicenciaServlet extends HttpServlet {
                             + "FROM licencia l "
                             + "INNER JOIN cliente c  ON c.id_cliente  = l.id_cliente "
                             + "INNER JOIN producto p ON p.id_producto = l.id_producto "
-                            + "ORDER BY l.id_licencia DESC";
+                            + "ORDER BY l.id_licencia";
 
         try (Connection cn = ConexionBD.obtener()) {
 

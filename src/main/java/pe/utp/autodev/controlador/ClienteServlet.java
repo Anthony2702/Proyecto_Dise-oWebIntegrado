@@ -81,7 +81,7 @@ public class ClienteServlet extends HttpServlet {
 
         ArrayList<Cliente> lista = new ArrayList<>();
         String sql = "SELECT id_cliente, ruc, razon_social, contacto, correo, telefono, fecha_registro, estado "
-                   + "FROM cliente ORDER BY id_cliente DESC";
+                   + "FROM cliente ORDER BY id_cliente";
 
         try (Connection cn = ConexionBD.obtener();
              PreparedStatement ps = cn.prepareStatement(sql);
