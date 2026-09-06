@@ -20,14 +20,4 @@ public class ConexionBD {
         }
         return DriverManager.getConnection(URL, USUARIO, CLAVE);
     }
-
-    public static void cerrar(Connection cn) {
-        if (cn != null) {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                System.err.println("[AUTODEV] Error al cerrar la conexion: " + ex.getMessage());
-            }
-        }
-    }
 }

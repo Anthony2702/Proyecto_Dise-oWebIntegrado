@@ -51,20 +51,33 @@ public class LicenciaServlet extends HttpServlet {
             return;
         }
 
-        String sql = "INSERT INTO licencia (id_cliente, id_producto, fecha_inicio, fecha_fin, monto_contrato, estado) "
-                   + "SELECT ?, id_producto, ?, ?, precio_anual, 'VIGENTE' FROM producto WHERE id_producto = ?";
+        String sqlPrecio = "SELECT precio_anual FROM producto WHERE id_producto = ?";
+        String sqlInsertar = "INSERT INTO licencia (id_cliente, id_producto, fecha_inicio, fecha_fin, monto_contrato, estado) "
+                           + "VALUES (?, ?, ?, ?, ?, 'VIGENTE')";
 
-        try (Connection cn = ConexionBD.obtener();
-             PreparedStatement ps = cn.prepareStatement(sql)) {
+        try (Connection cn = ConexionBD.obtener()) {
 
             LocalDate inicio = LocalDate.parse(fechaInicio);
             LocalDate fin = inicio.plusYears(1);
+            double precio = 0;
 
-            ps.setInt(1, Integer.parseInt(idCliente));
-            ps.setDate(2, Date.valueOf(inicio));
-            ps.setDate(3, Date.valueOf(fin));
-            ps.setInt(4, Integer.parseInt(idProducto));
-            ps.executeUpdate();
+            try (PreparedStatement ps = cn.prepareStatement(sqlPrecio)) {
+                ps.setInt(1, Integer.parseInt(idProducto));
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        precio = rs.getDouble("precio_anual");
+                    }
+                }
+            }
+
+            try (PreparedStatement ps = cn.prepareStatement(sqlInsertar)) {
+                ps.setInt(1, Integer.parseInt(idCliente));
+                ps.setInt(2, Integer.parseInt(idProducto));
+                ps.setDate(3, Date.valueOf(inicio));
+                ps.setDate(4, Date.valueOf(fin));
+                ps.setDouble(5, precio);
+                ps.executeUpdate();
+            }
 
             request.setAttribute("mensaje", "Licencia registrada con vigencia hasta el " + fin + ".");
             request.setAttribute("tipoMensaje", "ok");

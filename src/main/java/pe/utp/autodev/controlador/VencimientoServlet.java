@@ -27,8 +27,12 @@ public class VencimientoServlet extends HttpServlet {
 
         int dias = 30;
         String parametro = request.getParameter("txtDias");
-        if (parametro != null && parametro.matches("\\d+")) {
-            dias = Integer.parseInt(parametro);
+        if (parametro != null && !parametro.isEmpty()) {
+            try {
+                dias = Integer.parseInt(parametro);
+            } catch (NumberFormatException ex) {
+                dias = 30;
+            }
         }
 
         ArrayList<Licencia> lista = new ArrayList<>();
